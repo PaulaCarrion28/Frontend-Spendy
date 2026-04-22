@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 80px;
+    background-color: #4a5240;
+    position: relative;
+}
+
+.logo-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.header img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
