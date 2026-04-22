@@ -1,110 +1,72 @@
-/* 1. Reset básico para evitar espacios extraños */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* 2. Contenedor principal que envuelve todo (Form + Footer) */
-/* Asegúrate de añadir <div className="main-screen"> en tu JSX rodeando todo */
-.main-screen {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f4f7f6; /* Un gris muy claro para resaltar el blanco */
+
+
+.logo h2{
+    font-size: 12px;
 }
 
-/* 3. El área donde vive el formulario */
-.contenedor {
-    flex: 1; /* Esto empuja al footer hacia abajo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+body{
+    background:#f2f2f2;
+    height:100vh; /* 🔥 clave */
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-/* 4. La tarjeta del formulario */
-.formulario {
-    background: #ffffff;
-    padding: 40px;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+.formulario{
+    background:white;
+    padding:30px;
+    width:350px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-    font-weight: 600;
+.formulario h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
 }
 
-/* 5. Grupos de entrada */
-.input-group {
-    margin-bottom: 20px;
+.input-group{
+    margin-bottom:15px;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #666;
-    font-size: 14px;
+.input-group label{
+    display:block;
+    margin-bottom:5px;
+    color:#555;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
 }
 
-.input-group input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+.input-group input:focus{
+    border-color:#007bff;
 }
 
-/* 6. Botón de acción */
-button {
-    width: 100%;
-    padding: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    margin-top: 10px;
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#007bff;
+    color:white;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-/* 7. Link de "No tienes cuenta" */
-.newaccount {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #777;
-}
-
-.newaccount a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.newaccount a:hover {
-    text-decoration: underline;
+button:hover{
+    background:#0056b3;
 }
