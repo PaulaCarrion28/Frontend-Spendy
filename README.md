@@ -9,41 +9,6 @@ SweetAlert2           11.26.24     Alertas y notificaciones
 Vite                  7.3.1        Bundler y servidor de desarrollo
 
 
-📁 Estructura del proyecto
-Spendy-Front/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── api/
-│   │   └── api.js              # Funciones de peticiones HTTP (login, registro, gastos)
-│   ├── assets/
-│   ├── components/
-│   │   ├── Footer.jsx
-│   │   ├── Footer.css
-│   │   ├── Header.jsx
-│   │   └── Header.css
-│   ├── helpers/
-│   │   ├── generador.js
-│   │   └── local-storage.js
-│   ├── IMG/
-│   ├── pages/
-│   │   ├── Dashboard.jsx       # Panel principal del usuario
-│   │   ├── Login.jsx           # Página de inicio de sesión
-│   │   ├── Login.css
-│   │   └── Register.jsx        # Página de registro
-│   ├── router/
-│   │   └── router.jsx          # Configuración de rutas
-│   ├── services/
-│   │   └── api.js              # Endpoints del backend
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── package.json
-├── vite.config.js
-└── eslint.config.js
-
 📌 Rutas de la aplicación
 Ruta       Componente       Descripción
 /          Login            Página principal — inicio de sesión
@@ -104,6 +69,8 @@ git push origin develop
 Colaborador                Rama
 Paula Carrión Gómez       develop
 Sofía Escobar Ascencio    Sofia
+Juan Gonzalo Alvarez      juan
+Luisa Echeverri           luisa
 
 
 📄 Licencia
