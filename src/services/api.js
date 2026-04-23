@@ -1,10 +1,63 @@
-const URL_BASE = "localhost:8080/"
+const URL_BASE = "http://localhost:8080"
 
-export let end_ponits = {
-    users: URL_BASE + "users",
-    merchants: URL_BASE + "merchants",
-    expenses: URL_BASE + "expenses/",
-    payment_methos: URL_BASE +"payment_methos",
-    category: URL_BASE + "category",
+export const endpoints = {
+    login:    `${URL_BASE}/auth/login`,
+    register: `${URL_BASE}/auth/register`,
+    expenses: `${URL_BASE}/expenses`,
+    category: `${URL_BASE}/category`,
+    users:    `${URL_BASE}/users`,
+}
+ 
+ 
+export const loginRequest = async (data) => {
+    const response = await fetch(endpoints.login, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)   
+    })
+    return await response.json()    
+}
+ 
 
+export const registerRequest = async (data) => {
+    const response = await fetch(endpoints.register, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    return await response.json()
+}
+ 
+ 
+
+export const getExpenses = async () => {
+  
+    const token = localStorage.getItem("token")
+ 
+    const response = await fetch(endpoints.expenses, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`  // Le decimos al backend quién somos
+        }
+    })
+    return await response.json()
+}
+ 
+export const createExpense = async (data) => {
+    const token = localStorage.getItem("token")
+ 
+    const response = await fetch(endpoints.expenses, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+    return await response.json()
 }
