@@ -70,7 +70,7 @@ const Register = () => {
  
     return (
         <>
-            <Header />
+           
             <div className="contenedor">
                 <div className="formulario">
                     <h2>Registro</h2>
@@ -102,6 +102,13 @@ const Register = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
+                        <div className="input-group">
+                            <label>Tipo de documento</label>
+                            <input
+                            
+                            />
+                        </div>
+                        
                         <button type="submit" disabled={cargando}>
                             {cargando ? "Registrando..." : "Registrarse"}
                         </button>
@@ -111,8 +118,9 @@ const Register = () => {
                         <Link to="/login">Ingresar</Link>
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
+            
         </>
     )
 }

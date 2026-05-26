@@ -62,7 +62,7 @@ const Login = () => {
  
     return (
         <>
-            <Header />
+            
             <div className="contenedor">
                 <div className="formulario">
                     <h2>Iniciar Sesión</h2>
@@ -94,8 +94,9 @@ const Login = () => {
                         <Link to="/register">Regístrate</Link>
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
+            
         </>
     )
 }
