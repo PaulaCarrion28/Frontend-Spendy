@@ -46,3 +46,42 @@ export const alertaConfirmar = async (titulo, mensaje) => {
     })
     return resultado.isConfirmed
 }
+
+export const alertaRegistroExitoso = (
+    nombre,
+    navigate
+) => {
+
+    Swal.fire({
+
+        title: `¡Bienvenido ${nombre}! 🎉`,
+
+        text: "Tu cuenta fue creada correctamente",
+
+        width: 600,
+
+        padding: "3em",
+
+        color: "#716add",
+
+        background: "#fff",
+
+        backdrop: `
+            rgba(0,0,123,0.4)
+            url("https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif")
+            left top
+            no-repeat
+        `,
+
+        timer: 5000,
+
+        timerProgressBar: true,
+
+        showConfirmButton: false
+
+    }).then(() => {
+
+        navigate("/login")
+
+    })
+}

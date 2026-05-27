@@ -12,9 +12,11 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f4f7f6; /* Un gris muy claro para resaltar el blanco */
+    width: 100vw; /* Añade esto */
+    background-color: #f4f7f6;
+    margin: 0;   /* Asegura que no haya márgenes */
+    padding: 0;
 }
-
 /* 3. El área donde vive el formulario */
 .contenedor {
     flex: 1; /* Esto empuja al footer hacia abajo */
@@ -22,6 +24,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    
 }
 
 /* 4. La tarjeta del formulario */
