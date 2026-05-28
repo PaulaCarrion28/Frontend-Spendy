@@ -1,107 +1,117 @@
-const BASE_URL = 'http://localhost:8080/spendyapi/v1';
+const BASE_URL = '/spendyapi/v1'
 
-// ─── USUARIOS ────────────────────────────────
+// ─── USUARIOS ────────────────────────────────────────────────
 export const loginUsuario = async (correo, contraseña) => {
-    const res = await fetch(`${BASE_URL}/usuarios/login`, {
+    const res = await fetch(`${BASE_URL}/usuarios`)
+    if (!res.ok) throw new Error('No se pudo conectar al servidor')
+    const usuarios = await res.json()
+    const encontrado = usuarios.find(
+        u => u.correo === correo && (u.contrasena === contraseña || u.contraseña === contraseña)
+    )
+    if (!encontrado) throw new Error('Correo o contraseña incorrectos')
+    return encontrado
+}
+
+export const registrarUsuario = async (datos) => {
+    const res = await fetch(`${BASE_URL}/usuarios`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ correo, contraseña })
-    });
+        body: JSON.stringify(datos)
+    })
+    const texto = await res.text()
+    if (!res.ok) throw new Error(texto || 'Error al registrar usuario')
+    return texto ? JSON.parse(texto) : {}
+}
 
-    if (!res.ok) {
-        const errorData = await res.json().catch(() => null);
-        const mensaje = errorData?.detail
-            || errorData?.message
-            || errorData?.mensaje
-            || 'Correo o contraseña incorrectos';
-        throw new Error(mensaje);
-    }
+export const actualizarUsuario = async (id, datos) => {
+    const res = await fetch(`${BASE_URL}/usuarios/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+    })
+    if (!res.ok) throw new Error('Error al actualizar usuario')
+    return res.json()
+}
 
-    return res.json();
-};
-export const registrarUsuario = async (datos) => {
-
-    try {
-
-        const res = await fetch(`${BASE_URL}/usuarios`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos)
-        });
-
-        console.log("STATUS:", res.status);
-
-        const texto = await res.text();
-
-        console.log("RESPUESTA BACK:", texto);
-
-        if (!res.ok) {
-            throw new Error(texto);
-        }
-
-        return texto ? JSON.parse(texto) : {};
-
-    } catch (error) {
-
-        console.error("ERROR COMPLETO:", error);
-
-        throw error;
-    }
-};
-// ─── GASTOS ──────────────────────────────────
+// ─── GASTOS ──────────────────────────────────────────────────
 export const obtenerGastos = async () => {
-    const res = await fetch(`${BASE_URL}/gastos`);
-    if (!res.ok) throw new Error('Error al obtener gastos');
-    return res.json();
-};
+    const res = await fetch(`${BASE_URL}/gastos`)
+    if (!res.ok) throw new Error('Error al obtener gastos')
+    return res.json()
+}
 
 export const crearGasto = async (datos) => {
     const res = await fetch(`${BASE_URL}/gastos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
-    });
-    if (!res.ok) {
-        const errorData = await res.json().catch(() => null);
-        const mensaje = errorData?.detail || errorData?.message || 'Error al crear gasto';
-        throw new Error(mensaje);
-    }
-    return res.json();
-};
+    })
+    if (!res.ok) throw new Error('Error al crear gasto')
+    return res.json()
+}
 
 export const actualizarGasto = async (id, datos) => {
     const res = await fetch(`${BASE_URL}/gastos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
-    });
-    if (!res.ok) {
-        const errorData = await res.json().catch(() => null);
-        const mensaje = errorData?.detail || errorData?.message || 'Error al actualizar gasto';
-        throw new Error(mensaje);
-    }
-    return res.json();
-};
+    })
+    if (!res.ok) throw new Error('Error al actualizar gasto')
+    return res.json()
+}
 
 export const eliminarGasto = async (id) => {
-    const res = await fetch(`${BASE_URL}/gastos/${id}`, {
-        method: 'DELETE'
-    });
-    if (!res.ok) throw new Error('Error al eliminar gasto');
-};
+    const res = await fetch(`${BASE_URL}/gastos/${id}`, { method: 'DELETE' })
+    if (!res.ok) throw new Error('Error al eliminar gasto')
+}
 
-// ─── CATEGORÍAS ──────────────────────────────
+// ─── CATEGORÍAS ──────────────────────────────────────────────
 export const obtenerCategorias = async () => {
-    const res = await fetch(`${BASE_URL}/categorias`);
-    if (!res.ok) throw new Error('Error al obtener categorías');
-    return res.json();
-};
+    const res = await fetch(`${BASE_URL}/categorias`)
+    if (!res.ok) throw new Error('Error al obtener categorías')
+    return res.json()
+}
 
-// ─── COMERCIOS ───────────────────────────────
+export const crearCategoria = async (datos) => {
+    const res = await fetch(`${BASE_URL}/categorias`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+    })
+    if (!res.ok) throw new Error('Error al crear categoría')
+    return res.json()
+}
+
+// ─── COMERCIOS ───────────────────────────────────────────────
 export const obtenerComercios = async () => {
-    const res = await fetch(`${BASE_URL}/comercios`);
-    if (!res.ok) throw new Error('Error al obtener comercios');
-    return res.json();
-};
+    const res = await fetch(`${BASE_URL}/comercios`)
+    if (!res.ok) throw new Error('Error al obtener comercios')
+    return res.json()
+}
+
+export const crearComercio = async (datos) => {
+    const res = await fetch(`${BASE_URL}/comercios`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+    })
+    if (!res.ok) throw new Error('Error al crear comercio')
+    return res.json()
+}
+
+// ─── MÉTODOS DE PAGO ─────────────────────────────────────────
+export const obtenerMetodosPago = async () => {
+    const res = await fetch(`${BASE_URL}/metodosPago`)
+    if (!res.ok) throw new Error('Error al obtener métodos de pago')
+    return res.json()
+}
+
+export const crearMetodoPago = async (datos) => {
+    const res = await fetch(`${BASE_URL}/metodosPago`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+    })
+    if (!res.ok) throw new Error('Error al crear método de pago')
+    return res.json()
+}

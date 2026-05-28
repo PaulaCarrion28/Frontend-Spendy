@@ -1,17 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+// App.jsx — punto de entrada principal
+// El enrutamiento está centralizado en src/router/router.jsx
+// main.jsx usa RouterProvider con el router importado
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/router'
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
